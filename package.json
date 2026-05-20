@@ -1,0 +1,19 @@
+{
+  "name": "team-task-manager-monorepo",
+  "version": "1.0.0",
+  "description": "Full-Stack Team Task Manager with Premium Glassmorphism UI",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install --prefix backend && npm install --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev": "concurrently --kill-others-on-fail \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build:frontend": "npm run build --prefix frontend",
+    "prisma:setup": "npm run prisma:generate --prefix backend && npm run prisma:deploy --prefix backend",
+    "build": "npm run build:frontend && npm run prisma:setup",
+    "start": "npm start --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
